@@ -2,49 +2,49 @@
   
 
 <div>
-  <div class="status_of_node">
-    <div class="status_of_node-item">
-      <span class="status_of_node-label" style="font-size: 36px;">상태</span>
-      <span class="status_of_node-value" style="font-size: 48px;">매우 좋음</span>
+    <div class="status_of_node">
+      <div class="status_of_node-item">
+        <span class="status_of_node-label" style="font-size: 36px;">상태</span>
+        <span class="status_of_node-value" style="font-size: 48px;">매우 좋음</span>
+      </div>
+    </div>
+    <div class="chart-grid">
+      <div class="chart-item" v-if="lineChartData2.datasets[0].data.length">
+        <Line :data="lineChartData2" :options="options2" />
+        <h3>용존산소량</h3>
+      </div>
+      <div class="chart-item" v-if="lineChartData.datasets[0].data.length">
+        <Line :data="lineChartData" :options="options2" />
+        <h3>수온</h3>
+      </div>
+      <div class="chart-item" v-if="lineChartData4.datasets[0].data.length">
+        <Line :data="lineChartData4" :options="options2" />
+        <h3>PH</h3>
+      </div>
+      <div class="chart-item" v-if="lineChartData3.datasets[0].data.length">
+        <Line :data="lineChartData3" :options="options2" />
+        <h3>탁도</h3>
+      </div>
     </div>
   </div>
-  <div class="chart-grid">
-    <div class="chart-item">
-      <Line :data="lineChartData2" :options="options2" />
-      <h3>용존산소량</h3>
-    </div>
-    <div class="chart-item">
-      <Line :data="lineChartData" :options="options2" />
-      <h3>수온</h3>
-    </div>
-    <div class="chart-item">
-      <Line :data="lineChartData4" :options="options2" />
-      <h3>PH</h3>
-    </div>
-    <div class="chart-item">
-      <Line :data="lineChartData3" :options="options2" />
-      <h3>탁도</h3>
-    </div>
-  </div>
-</div>
 <div>
 
   <div class="status">
     <div class="status-item">
       <div class="status-label">용존산소량</div>
-      <div class="status-value" >{{ 측정값[0] }}</div>
+      <div class="status-value" >{{ lineChartData2.datasets[0].data[lineChartData.labels.length - 1] }}</div>
     </div>
     <div class="status-item">
       <div class="status-label">탁도</div>
-      <div class="status-value">{{ 측정값[1] }}NTU</div>
+      <div class="status-value">{{ lineChartData3.datasets[0].data[lineChartData.labels.length - 1] }}NTU</div>
     </div>
     <div class="status-item">
       <div class="status-label">수온</div>
-      <div class="status-value">{{ 측정값[2] }}°C </div>
+      <div class="status-value">{{ lineChartData.datasets[0].data[lineChartData.labels.length - 1]}}°C </div>
     </div>
     <div class="status-item">
       <div class="status-label">PH</div>
-      <div class="status-value">{{ 측정값[3] }}PH</div>
+      <div class="status-value">{{ lineChartData4.datasets[0].data[lineChartData.labels.length - 1] }}PH</div>
       
         
     </div>
@@ -56,8 +56,7 @@
 import { Line } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js'
 import * as chartConfig3 from '../assets/chartConfig3.js'
-import { getStatusData, measuredData } from '../assets/status'
-
+import axios from 'axios';
 
 ChartJS.register(
   Title,
@@ -76,16 +75,34 @@ export default {
   },
   data() {
     return {
-     
-      options2: chartConfig3.options,
-      lineChartData: chartConfig3.data,
-      lineChartData2: chartConfig3.data2,
-      lineChartData3: chartConfig3.data3,
-      lineChartData4: chartConfig3.data4,
-      data: getStatusData(),
-      측정값:measuredData(),
-      
+      options2: {},
+      lineChartData: {},
+      lineChartData2: {},
+      lineChartData3: {},
+      lineChartData4: {},
     }
+  },
+  beforeMount() {
+    // 데이터를 생성 또는 가져와서 데이터 속성에 할당
+    this.options2 = chartConfig3.options;
+    this.lineChartData = chartConfig3.data;
+    this.lineChartData2 = chartConfig3.data2;
+    this.lineChartData3 = chartConfig3.data3;
+    this.lineChartData4 = chartConfig3.data4;
+
+    // 서버에서 데이터 가져오기
+    axios.get('http://43.200.120.63/api/Node3').then((response) => {
+      const tempData = response.data.map(item => item.temp);
+      const ph = response.data.map(item => item.ph);
+      const tak = response.data.map(item => item.tak);
+      const DO = response.data.map(item => item.do);
+
+      // data 객체 업데이트
+      this.lineChartData.datasets[0].data = tempData;
+      this.lineChartData2.datasets[0].data = ph;
+      this.lineChartData3.datasets[0].data = tak;
+      this.lineChartData4.datasets[0].data = DO;
+    });
   }
 }
 </script>

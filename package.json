@@ -22,7 +22,9 @@
     "vue-chartjs": "^5.2.0",
     "vue-google-charts": "^1.1.0",
     "vue-router": "^4.2.0",
-    "vue3-apexcharts": "^1.4.1"
+    "vue3-apexcharts": "^1.4.1",
+    "vuex": "^4.1.0",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

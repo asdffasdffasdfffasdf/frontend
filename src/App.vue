@@ -22,7 +22,7 @@
 <script>
 
 
-import serverdata from './assets/serverdata'
+
 
 
 export default {
@@ -30,7 +30,7 @@ export default {
   data () {
       return {
         
-        a:serverdata,
+       
       }
   }
   
@@ -50,36 +50,6 @@ export default {
   margin-top: 60px;
 }
 
-.status {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #f8f9fa;
-  padding: 10px;
-  height: 80px; /* Adjust the height as needed */
-  width: 90%;
-  max-width: 100vw;
-  margin: 0 auto;
-}
-
-.status-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.status-label {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.status-value {
-  font-size: 24px;
-  font-weight: bold;
-  color: #007bff;
-  margin-top: 5px;
-}
 
 .button-container {
   margin-top: 20px;

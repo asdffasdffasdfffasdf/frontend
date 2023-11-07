@@ -18,17 +18,16 @@ axios.get('http://43.200.120.63/api/Node3').then((response) => {
   data4.datasets[0].data = DO;
 });
 
-
 export const data = {
   //온도
   labels: [
-    now.subtract(6, "day").format("YYYY-MM-DD"),
-    now.subtract(5, "day").format("YYYY-MM-DD"),
-    now.subtract(4, "day").format("YYYY-MM-DD"),
-    now.subtract(3, "day").format("YYYY-MM-DD"),
-    now.subtract(2, "day").format("YYYY-MM-DD"),
-    now.subtract(1, "day").format("YYYY-MM-DD"),
-    now.format("YYYY-MM-DD")
+    now.subtract(6, "hour").format("HH:mm"),
+    now.subtract(5, "hour").format("HH:mm"),
+    now.subtract(4, "hour").format("HH:mm"),
+    now.subtract(3, "hour").format("HH:mm"),
+    now.subtract(2, "hour").format("HH:mm"),
+    now.subtract(1, "hour").format("HH:mm"),
+    now.format("HH:mm")
   ],
   datasets: [
     {
@@ -44,13 +43,13 @@ export const data = {
 export const data2 = {
   //ph
   labels: [
-    now.subtract(6, "day").format("YYYY-MM-DD"),
-    now.subtract(5, "day").format("YYYY-MM-DD"),
-    now.subtract(4, "day").format("YYYY-MM-DD"),
-    now.subtract(3, "day").format("YYYY-MM-DD"),
-    now.subtract(2, "day").format("YYYY-MM-DD"),
-    now.subtract(1, "day").format("YYYY-MM-DD"),
-    now.format("YYYY-MM-DD")
+    now.subtract(6, "hour").format("HH:mm"),
+    now.subtract(5, "hour").format("HH:mm"),
+    now.subtract(4, "hour").format("HH:mm"),
+    now.subtract(3, "hour").format("HH:mm"),
+    now.subtract(2, "hour").format("HH:mm"),
+    now.subtract(1, "hour").format("HH:mm"),
+    now.format("HH:mm")
   ],
   datasets: [
     {
@@ -64,13 +63,13 @@ export const data2 = {
 export const data3 = {
   //tak
   labels: [
-    now.subtract(6, "day").format("YYYY-MM-DD"),
-    now.subtract(5, "day").format("YYYY-MM-DD"),
-    now.subtract(4, "day").format("YYYY-MM-DD"),
-    now.subtract(3, "day").format("YYYY-MM-DD"),
-    now.subtract(2, "day").format("YYYY-MM-DD"),
-    now.subtract(1, "day").format("YYYY-MM-DD"),
-    now.format("YYYY-MM-DD")
+    now.subtract(6, "hour").format("HH:mm"),
+    now.subtract(5, "hour").format("HH:mm"),
+    now.subtract(4, "hour").format("HH:mm"),
+    now.subtract(3, "hour").format("HH:mm"),
+    now.subtract(2, "hour").format("HH:mm"),
+    now.subtract(1, "hour").format("HH:mm"),
+    now.format("HH:mm")
   ],
   datasets: [
     {
@@ -85,13 +84,13 @@ export const data3 = {
 export const data4 = {
   //DO
   labels: [
-    now.subtract(6, "day").format("YYYY-MM-DD"),
-    now.subtract(5, "day").format("YYYY-MM-DD"),
-    now.subtract(4, "day").format("YYYY-MM-DD"),
-    now.subtract(3, "day").format("YYYY-MM-DD"),
-    now.subtract(2, "day").format("YYYY-MM-DD"),
-    now.subtract(1, "day").format("YYYY-MM-DD"),
-    now.format("YYYY-MM-DD")
+    now.subtract(6, "hour").format("HH:mm"),
+    now.subtract(5, "hour").format("HH:mm"),
+    now.subtract(4, "hour").format("HH:mm"),
+    now.subtract(3, "hour").format("HH:mm"),
+    now.subtract(2, "hour").format("HH:mm"),
+    now.subtract(1, "hour").format("HH:mm"),
+    now.format("HH:mm")
   ],
   datasets: [
     {
